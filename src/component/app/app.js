@@ -6,7 +6,7 @@ import './app.css'
 
 const App = () => {
     return <div className="container">
-        <Header />
+        <Header text="Films" color="olive" />
         <SearchPanel />
         <CardList />
     </div>

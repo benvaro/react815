@@ -4,9 +4,9 @@ import './card-list.css'
 
 const CardList = () => {
     return <div className="row">
-        <Card />
-        <Card />
-        <Card />
+        <Card  />
+        <Card  />
+        <Card  />
     </div>
 }
 

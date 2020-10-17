@@ -3,7 +3,7 @@ import React from 'react';
 import './card.css'
 
 const Card = () => {
-    const src = "https://robohash.org/avatar.png";
+    const src = "https://robohash.org/jkhjkljhjj.png";
 
     return <div className="col-10 col-md-6 col-lg-4 card">
         <h2>Avatar</h2>
