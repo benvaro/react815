@@ -1,0 +1,15 @@
+.important {
+    border: 2px solid rgb(78, 13, 13);
+}
+
+i {
+    font-size: 40px;
+}
+
+i:hover {
+    color: red;
+}
+
+.disabled {
+    filter: sepia(1);
+}
