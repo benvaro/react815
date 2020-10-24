@@ -1,3 +1,3 @@
 import Card from './card';
-
-export default Card;
+import {withRouter} from 'react-router-dom';
+export default withRouter(Card);

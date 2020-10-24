@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
-
+import { withRouter } from 'react-router-dom';
 import './card.css'
 
-export default class Card extends Component {
+class Card extends Component {
     state = {
         important: false,
         deleted: false
     }
 
 
-    showName = () => {
+    showName = (id, history) => {
+        console.log(id);
         this.setState({ important: !this.state.important });
         // this.state.important = !this.state.important;
         console.log("click: " + this.state.important);
+        // /all/{elem.id} 
+        history.push(`/all/${id}`);
     }
 
     disableItem = () => {
@@ -20,6 +23,7 @@ export default class Card extends Component {
     }
 
     render() {
+        console.log(this.props);
         const { onDelete } = this.props;
         const { film } = this.props;
         const { id, name, year, genre } = film;
@@ -29,8 +33,8 @@ export default class Card extends Component {
             className += ' important';
         if (deleted)
             className += ' disabled';
-        const src = "https://robohash.org/" + name + ".png";
-        return <div className={className} onClick={this.showName}>
+        const src = "https://robohash.org/" + name + ".png?set=set4";
+        return <div className={className} onClick={() => this.showName(id, this.props.history)}>
             <div className="d-flex justify-content-between">
                 <h2>{name}​​</h2>
                 <a>
@@ -46,3 +50,5 @@ export default class Card extends Component {
         </div>
     }
 }
+
+export default withRouter(Card)

@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Card from '../card';
 import './card-list.css'
 
 
 
-export default class CardList extends Component {
-
-    deleteFilm = (id) => {
-        console.log(id);
-        // todo: delete element from array by id
-        // пам'ятаємо: НЕ МОЖНА змінювати state "напряму" - лише через setState
-    }
-
-    render() {
-        return <div className="row">
-            {this.props.obj.map((elem) => { return <Card onDelete={this.deleteFilm} key={elem.name} film={elem} /> })}
+const CardList = ({ id, obj, onDelete, ...props }) => {
+    console.log(props);
+    const elem = id <= obj.length ? obj[id - 1] : obj[0];
+    let el = '';
+    if (id == undefined)
+        el = obj.map((elem) => { return <Card onDelete={onDelete} key={elem.name} film={elem} /> });
+    else
+        el = <Card onDelete={onDelete} key={elem.id} film={elem} />;
+    return <div className="container">
+        <div className="row">
+            {el}
         </div>
-    }
+    </div>
 }
+
+export default withRouter(CardList);
