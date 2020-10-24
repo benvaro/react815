@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import EditForm from '../edit-form/edit-form';
 import './card.css'
 
 class Card extends Component {
     state = {
         important: false,
-        deleted: false
+        deleted: false,
+        isOpenEdit: false
     }
 
 
@@ -20,6 +22,10 @@ class Card extends Component {
 
     disableItem = () => {
         this.setState({ deleted: !this.state.deleted })
+    }
+
+    onEdit = (id) => {
+        this.setState({ isOpenEdit: !this.state.isOpenEdit })
     }
 
     render() {
@@ -47,6 +53,10 @@ class Card extends Component {
                 <p><b>Year: </b>{year}​​</p>
                 <p><b>Genre: </b>{genre}​​</p>
             </div>
+            <button className="btn btn-info" onClick={() => this.onEdit(id)}>Edit</button>
+
+            <EditForm show={this.state.isOpenEdit} />
+
         </div>
     }
 }

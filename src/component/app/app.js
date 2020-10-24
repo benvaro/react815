@@ -39,6 +39,10 @@ export default class App extends Component {
         search: ''
     }
 
+    onEdit = (id) => {
+        console.log(id);
+    }
+
     onAdd = (item) => {
         const { obj } = this.state;
         item.id = obj.length > 0 ? obj[obj.length - 1].id + 1 : 1;
@@ -69,7 +73,9 @@ export default class App extends Component {
                 <Switch>
                     <Route path='/' exact render={() => <Table obj={filtered} />} />
                     <Route path='/all' exact render={() => <CardList obj={filtered} onDelete={this.onDelete} />} />
-                    <Route path='/all/:id' render={({ match }) => <CardList id={match.params.id} obj={filtered} onDelete={this.onDelete} />} />
+                    <Route path='/all/:id' render={({ match }) => <CardList
+                        onEdit={this.onEdit}
+                        id={match.params.id} obj={filtered} onDelete={this.onDelete} />} />
                     {/* <CardList   /> */}
                     <Route path='/add' render={() => <AddForm onAdd={this.onAdd} />} />
                     {/* <AddForm onAdd={this.onAdd} /> */}
